@@ -8,22 +8,30 @@
 import SwiftUI
 
 struct ContentItemViewer: View {
+    
+    var topSpacerHeight: CGFloat = 400
+    
     var body: some View {
         ZStack {
             VStack {
                 Spacer()
                     .frame(height: 50)
-                Image(systemName: "music.note")
-                Text("Title")
-                Text("Subtitle")
+                Image("norah")
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                
+                Text("Nora Jones")
+                    .foregroundColor(.white)
+                Text("Little Broken Hearts")
+                    .foregroundColor(.init(red: 0.5, green: 0.5, blue: 0.5))
                 Spacer()
             }
             ScrollView {
-                VStack {
+                VStack(spacing: 0) {
                     HStack {
                         Spacer()
-                            .frame(height: 200)
-                            .background(Color.red.opacity(0.3))
+                            .frame(height: topSpacerHeight)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.clear, Color.clear, Color.clear, Color.clear, Color.black]), startPoint: .top, endPoint: .bottom))
                     }
                     VStack {
                         ForEach(0..<30) { indicator in
