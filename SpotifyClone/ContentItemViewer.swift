@@ -18,12 +18,23 @@ struct ContentItemViewer: View {
                 Text("Subtitle")
                 Spacer()
             }
-            VStack {
-                Spacer()
-                    .frame(width: 50, height: 200)
-                Spacer()
-                    .frame(width: 200)
-                    .background(Color.blue)
+            ScrollView {
+                VStack {
+                    HStack {
+                        Spacer()
+                            .frame(height: 200)
+                            .background(Color.red.opacity(0.3))
+                    }
+                    VStack {
+                        ForEach(0..<30) { indicator in
+                            HStack {
+                                Text("\(indicator)")
+                                    .foregroundColor(.white)
+                                Spacer()
+                            }
+                        }
+                    }.background(Color.black)
+                }.background(Color.yellow.opacity(0.1))
             }
         }
     }
