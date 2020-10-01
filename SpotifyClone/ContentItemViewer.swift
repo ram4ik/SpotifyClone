@@ -13,6 +13,10 @@ struct ContentItemViewer: View {
     
     var body: some View {
         ZStack {
+            
+            LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)), Color.black, Color.black]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+            
             VStack {
                 Spacer()
                     .frame(height: 50)
@@ -22,8 +26,10 @@ struct ContentItemViewer: View {
                 
                 Text("Nora Jones")
                     .foregroundColor(.white)
+                    .font(.system(size: 24, weight: .bold))
                 Text("Little Broken Hearts")
                     .foregroundColor(.init(red: 0.5, green: 0.5, blue: 0.5))
+                    .font(.system(size: 16, weight: .medium))
                 Spacer()
             }
             ScrollView {
@@ -36,13 +42,12 @@ struct ContentItemViewer: View {
                     VStack {
                         ForEach(0..<30) { indicator in
                             HStack {
-                                Text("\(indicator)")
-                                    .foregroundColor(.white)
+                                CellView()
                                 Spacer()
                             }
                         }
                     }.background(Color.black)
-                }.background(Color.yellow.opacity(0.1))
+                }.background(Color.clear)
             }
         }
     }
