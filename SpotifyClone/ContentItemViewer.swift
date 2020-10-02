@@ -64,13 +64,21 @@ struct ContentItemViewer: View {
             VStack {
                 Spacer()
                     .frame(height: playButtonOffset + 300)
-                Text("PLAY")
-                    .foregroundColor(.white)
-                    .frame(width: 240, height: 50)
-                    .background(Color.init(red: 30/255, green: 215/255, blue: 96/255))
-                    .cornerRadius(25)
-                    .font(.system(size: 20, weight: .bold))
-                    .shadow(radius: 20)
+                
+                HStack {
+                    if (playButtonOffset > -300) {
+                        Text("PLAY")
+                    } else {
+                        Image(systemName: "play.fill")
+                    }
+                }
+                .foregroundColor(.white)
+                .frame(width: getPlayButtonWidth(), height: 50)
+                .background(Color.init(red: 30/255, green: 215/255, blue: 96/255))
+                .cornerRadius(25)
+                .font(.system(size: 20, weight: .bold))
+                .shadow(radius: 20)
+                
                 Spacer()
             }
             
@@ -80,6 +88,18 @@ struct ContentItemViewer: View {
                     .foregroundColor(.yellow)
                 Spacer()
             }
+        }
+    }
+    
+    func getPlayButtonWidth() -> CGFloat {
+        if playButtonOffset > -150 {
+            return 240
+        } else if playButtonOffset <= -300 {
+            return 50
+        } else {
+            var width: CGFloat = 240 - (190 * (((-1 * playButtonOffset) - 150) / 150))
+            
+            return width
         }
     }
 }
