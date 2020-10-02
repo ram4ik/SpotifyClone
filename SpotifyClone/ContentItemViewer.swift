@@ -11,6 +11,7 @@ struct ContentItemViewer: View {
     
     var topSpacerHeight: CGFloat = 400
     @State var playButtonOffset: CGFloat = 335
+    var reusableColor = Color.init(red: 61/255, green: 89/255, blue: 115/255)
     
     var body: some View {
         ZStack {
@@ -62,6 +63,12 @@ struct ContentItemViewer: View {
             }
             
             VStack {
+                LinearGradient(gradient: Gradient(colors: [reusableColor, Color.clear]), startPoint: .top, endPoint: .bottom)
+                    .frame(height: 300)
+                Spacer()
+            }.edgesIgnoringSafeArea(.all)
+            
+            VStack {
                 Spacer()
                     .frame(height: playButtonOffset + 300)
                 
@@ -76,16 +83,27 @@ struct ContentItemViewer: View {
                 .frame(width: getPlayButtonWidth(), height: 50)
                 .background(Color.init(red: 30/255, green: 215/255, blue: 96/255))
                 .cornerRadius(25)
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: 17, weight: .bold))
                 .shadow(radius: 20)
+                
+                Spacer()
+            }
+            
+            VStack {
+                HStack {
+                    Image(systemName: "chevron.left")
+                    Spacer()
+                    Image(systemName: "ellipsis")
+                }
+                .foregroundColor(.white)
+                .padding()
                 
                 Spacer()
             }
             
             //DEBUG
             VStack {
-                Text("\(playButtonOffset)")
-                    .foregroundColor(.yellow)
+                //Text("\(playButtonOffset)").foregroundColor(.yellow)
                 Spacer()
             }
         }
