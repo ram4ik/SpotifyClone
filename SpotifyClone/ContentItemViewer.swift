@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentItemViewer: View {
     
     var topSpacerHeight: CGFloat = 400
+    var playButtonOffset: CGFloat = 335
     
     var body: some View {
         ZStack {
@@ -49,6 +50,19 @@ struct ContentItemViewer: View {
                     }.background(Color.black)
                 }.background(Color.clear)
             }
+            
+            VStack {
+                Spacer()
+                    .frame(height: playButtonOffset)
+                Text("PLAY")
+                    .foregroundColor(.white)
+                    .frame(width: 240, height: 50)
+                    .background(Color.init(red: 30/255, green: 215/255, blue: 96/255))
+                    .cornerRadius(25)
+                    .font(.system(size: 20, weight: .bold))
+                Spacer()
+            }
+                
         }
     }
 }
